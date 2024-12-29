@@ -1,0 +1,21 @@
+const max = parseInt(prompt("Enter the maximum number: "));
+let random = Math.floor(Math.random() * max) + 1;
+let guess = prompt("Guess the number: ");
+
+while (true) {
+    if (guess === "quit") {
+        console.log("User quit");
+        break;
+    }
+
+    guess = parseInt(guess); // Convert guess to a number
+
+    if (guess === random) {
+        console.log("Congratulations! You found the right random number:", random);
+        break;
+    } else if (guess < random) {
+        guess = prompt("Hint: Your guessing number is too small, try again");
+    } else {
+        guess = prompt("Hint: Your guessing number is too large, try again");
+    }
+}
