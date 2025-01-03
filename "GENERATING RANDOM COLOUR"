@@ -1,0 +1,82 @@
+
+-->>> HTML
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css"> <!-- Link to external CSS -->
+</head>
+<body>
+    <h3>Generate a random colour</h3>
+    <br>
+    <button id="generate-btn">Generate Colour</button>
+    <br>
+    <div id="color-box">This is your new colour</div>
+
+    <script src="index.js"></script> <!-- Link to external JS -->
+</body>
+</html>
+
+
+/* Centering the body content */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    flex-direction: column; /* Stack items vertically */
+}
+
+  ----> CSS
+
+/* Styling for the button */
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-bottom: 20px; /* Gap between button and div */
+}
+
+/* Styling for the color display div */
+div {
+    width: 150px;
+    height: 150px;
+    border: 2px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    text-align: center;
+    line-height: normal;
+    margin-top: 20px; /* Gap between the div and other elements */
+    transition: background-color 0.3s ease; /* Smooth transition for color change */
+}
+
+
+-----> JavaScript
+
+// Select the button and the div element
+const button = document.getElementById('generate-btn');
+const colorBox = document.getElementById('color-box');
+
+// Function to generate random color
+function getRandomColor() {
+    const letters = '0123456789ABCDEF';
+    let color = '#';
+    for (let i = 0; i < 6; i++) {
+        color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+}
+
+// Add event listener to the button
+button.addEventListener('click', () => {
+    const randomColor = getRandomColor();
+    colorBox.style.backgroundColor = randomColor; // Apply random color to the div
+    colorBox.textContent = randomColor; // Display the color code inside the div
+});
+
